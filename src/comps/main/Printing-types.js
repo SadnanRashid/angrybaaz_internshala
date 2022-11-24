@@ -5,7 +5,7 @@ export default function PrintingTypes() {
   let key = 0;
   const [data, setData] = useState([]);
   const [test, setTest] = useState("");
-  const [selectedFile, setSelectedFile] = useState(null);
+  // const [selectedFile, setSelectedFile] = useState(null);
   const [image, setImage] = useState(null);
   function handleSelectChange(event) {
     setTest(event.target.value);
@@ -13,12 +13,10 @@ export default function PrintingTypes() {
   }
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
-      setSelectedFile(event.target.files[0]);
       setImage(URL.createObjectURL(event.target.files[0]));
     }
   };
   const handleDone = () => {
-    console.log(data);
     const length = data.length;
     let flag = false;
     for (let i = 0; i < length; i++) {
@@ -45,7 +43,7 @@ export default function PrintingTypes() {
   return (
     <div>
       {/* <img src={image} alt="preview image" /> */}
-      <div className="d-flex flex-row flex-wrap mt-1 justify-content-center">
+      <div className="d-flex flex-row flex-wrap mt-1">
         {data.map((e) => {
           key += 1;
           return (
