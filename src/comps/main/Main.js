@@ -4,6 +4,7 @@ import PersonalInfo from "./Personal-info";
 import AddressInfo from "./Address-details";
 import ShopInfo from "./Shop-details";
 import PrintingTypes from "./Printing-types";
+import MainFooter from "./MainFooter";
 
 export default function Main() {
   return (
@@ -17,6 +18,7 @@ export default function Main() {
         <ShopInfo />
         {/* Printing type */}
         <PrintingTypes />
+        <MainFooter />
       </div>
     </div>
   );

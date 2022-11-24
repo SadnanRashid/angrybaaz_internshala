@@ -1,11 +1,10 @@
 import "./main.css";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 export default function PrintingTypes() {
   let key = 0;
   const [data, setData] = useState([]);
   const [test, setTest] = useState("");
-  // const [selectedFile, setSelectedFile] = useState(null);
   const [image, setImage] = useState(null);
   function handleSelectChange(event) {
     setTest(event.target.value);
@@ -36,24 +35,12 @@ export default function PrintingTypes() {
     } else {
       // console.log("already ini");
       window.alert(
-        "“Printing type already added, select some other printing type"
+        "Printing type already added, select some other printing type"
       );
     }
   };
   return (
     <div>
-      {/* <img src={image} alt="preview image" /> */}
-      <div className="d-flex flex-row flex-wrap mt-1">
-        {data.map((e) => {
-          key += 1;
-          return (
-            <div className="image-div mx-2 mb-3 mt-4" key={key}>
-              <img src={e.image} alt="preview image" />
-              <p>{e.test}</p>
-            </div>
-          );
-        })}
-      </div>
       <div className="d-flex flex-row justify-content-between mt-5">
         <h3 className="fw-bold">Printing Types: </h3>
         <p
@@ -64,10 +51,22 @@ export default function PrintingTypes() {
           Add printing type
         </p>
       </div>
+      {/* Show all the printing types */}
+      <div className="d-flex flex-row flex-wrap mt-1">
+        {data.map((e) => {
+          key += 1;
+          return (
+            <div className="image-div mx-2 mb-3 mt-4" key={key}>
+              <img src={e.image} alt="preview image" />
+              <p className="fw-bold">{e.test}</p>
+            </div>
+          );
+        })}
+      </div>
+      {/* End of printing types */}
       {/* modal */}
       <div>
         <>
-          {/* Modal */}
           <div
             className="modal"
             id="exampleModal"
@@ -124,6 +123,7 @@ export default function PrintingTypes() {
                     type="button"
                     className="btn btn-secondary"
                     onClick={handleDone}
+                    data-bs-dismiss="modal"
                   >
                     Done
                   </button>
